@@ -2,7 +2,7 @@
 # Date Created: 10 / 31 / 2025
 # Date Modified: 01 / 30 / 2026
 # Description: Converts a spotify playlist into a txt file which you can use 
-# with another one of my scripts, that modifies anything to do music files.
+# with another one of my scripts, that modifies metadata for audio files.
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -16,6 +16,10 @@ CLIENT_ID = ''
 CLIENT_SECRET = ''
 playlist_url = ''
 
+# Audio file format - (https://en.wikipedia.org/wiki/Audio_file_format#list)
+
+file_extension = '.flac'
+
 # Start timer - Speedrun timer goes brrr :D
 
 start_time = time.time()
@@ -26,7 +30,7 @@ auth_manager = SpotifyClientCredentials(client_id = CLIENT_ID, client_secret = C
 spotify = spotipy.Spotify(auth_manager = auth_manager)
 playlist_id = playlist_url.split('/')[-1].split('?')[0]
 
-# Fetch songs from playlist
+# Fetch all songs from playlist
 
 results = spotify.playlist_items(
     playlist_id,
@@ -70,7 +74,7 @@ for index, item in enumerate(songs, start=1):
 
     # Write formatted line - Formatted like so: 1) Iris - The Goo Goo Dolls.flac
 
-    lines.append(f"{index}) {song_name} - {artists}.flac\n")
+    lines.append(f"{index}) {song_name} - {artists}{file_extension}\n")
 
 with open(output_file, 'w', encoding='utf-8') as output_playlist:
     output_playlist.writelines(lines)
