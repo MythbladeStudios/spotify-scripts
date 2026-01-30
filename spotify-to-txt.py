@@ -1,6 +1,6 @@
 # Author: MythbladeStudios
 # Date Created: 10 / 31 / 2025
-# Date Modified: 01 / 30 / 2026
+# Date Modified: 01 / 31 / 2026
 # Description: Converts a spotify playlist into a txt file which you can use 
 # with another one of my scripts, that modifies metadata for audio files.
 
@@ -88,5 +88,5 @@ runtime = end_time - start_time
 seconds = int(runtime)
 milliseconds = int((runtime % 1) * 1000)
 
-print(f"Saved {len(songs)} songs to {output_file}")
-print(f"Total runtime: {seconds} seconds and {milliseconds} milliseconds")
+print(f"\n[Info] - Saved {len(songs)} songs to {output_file}")
+print(f"         Total runtime: {seconds} seconds and {milliseconds} milliseconds")
