@@ -46,7 +46,7 @@ output_file = os.path.join(downloads_path, "playlist.txt")
 
 # Pre-compile regex filter for invalid characters
 
-INVALID_CHARACTERS_FILTER = re.compile(r'[\\/*?:"<>|]')
+INVALID_CHARACTERS_FILTER = re.compile(r'[\\*?:"<>|]')
 
 # Remove invalid characters from the song title
 
