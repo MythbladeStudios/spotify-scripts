@@ -47,11 +47,11 @@ output_file    = os.path.join(downloads_path, "playlist.txt")
 
 # Pre-compile regex filter for invalid characters
 
-INVALID_CHARACTERS_FILTER = re.compile(r'[\\*?:"<>|]')
+INVALID_CHARACTERS_FILTER = re.compile(r'[\\*?:<>|]')
 
 # Remove invalid characters from song title
 
-def remove_invalid_characters(s):
+def fix_invalid_characters(s):
     return INVALID_CHARACTERS_FILTER.sub('', s).replace('/', '∕').replace('"', '″')
 
 # Fetch songs from playlist
@@ -69,8 +69,8 @@ songs = [item for item in songs if item.get('track')]
 lines = []
 for index, item in enumerate(songs, start=1):
     song         = item['track']
-    song_name    = remove_invalid_characters(song['name'])
-    artist_names = [remove_invalid_characters(artist['name']) for artist in song['artists']]
+    song_name    = fix_invalid_characters(song['name'])
+    artist_names = [fix_invalid_characters(artist['name']) for artist in song['artists']]
     artists      = ', '.join(artist_names)
 
     # Write formatted line - Formatted like so: 1) Iris - The Goo Goo Dolls.flac | https://open.spotify.com/track/...
