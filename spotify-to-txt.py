@@ -28,8 +28,8 @@ start_time = time.time()
 # Authenticate with Spotify
 
 auth_manager = SpotifyClientCredentials(client_id = CLIENT_ID, client_secret = CLIENT_SECRET)
-spotify      = spotipy.Spotify(auth_manager = auth_manager)
-playlist_id  = playlist_url.split('/')[-1].split('?')[0]
+spotify = spotipy.Spotify(auth_manager = auth_manager)
+playlist_id = playlist_url.split('/')[-1].split('?')[0]
 
 # Fetch all songs from playlist
 
@@ -43,7 +43,7 @@ songs = results['items']
 # Path to downloads folder
 
 downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
-output_file    = os.path.join(downloads_path, "playlist.txt")
+output_file = os.path.join(downloads_path, "playlist.txt")
 
 # Pre-compile regex filter for invalid characters
 
@@ -68,10 +68,10 @@ songs = [item for item in songs if item.get('track')]
 
 lines = []
 for index, item in enumerate(songs, start=1):
-    song         = item['track']
-    song_name    = fix_invalid_characters(song['name'])
+    song = item['track']
+    song_name = fix_invalid_characters(song['name'])
     artist_names = [fix_invalid_characters(artist['name']) for artist in song['artists']]
-    artists      = ', '.join(artist_names)
+    artists = ', '.join(artist_names)
 
     # Write formatted line - Formatted like so: 1) Iris - The Goo Goo Dolls.flac | https://open.spotify.com/track/...
 
@@ -89,9 +89,9 @@ with open(output_file, 'w', encoding='utf-8') as output_playlist:
 # Pretty fast for 700 songs (~5.4 seconds)
 # Slower if Spotify rate limits you :(
 
-end_time     = time.time()
-runtime      = end_time - start_time
-seconds      = int(runtime)
+end_time = time.time()
+runtime = end_time - start_time
+seconds = int(runtime)
 milliseconds = int((runtime % 1) * 1000)
 
 print(f"\n[Info] - Saved {len(songs)} songs to {output_file}")
