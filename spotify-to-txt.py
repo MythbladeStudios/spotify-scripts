@@ -1,6 +1,6 @@
 # Author: MythbladeStudios
 # Date Created: 10 / 31 / 2025
-# Date Modified: 01 / 31 / 2026
+# Date Modified: 02 / 23 / 2026
 # Description: Converts a spotify playlist into a txt file which you can use 
 # with another one of my scripts, that modifies metadata for audio files.
 
@@ -46,7 +46,7 @@ output_file = os.path.join(downloads_path, "playlist.txt")
 
 # Pre-compile regex filter for invalid characters
 
-INVALID_CHARACTERS_FILTER = re.compile(r'[\\*?:"<>|]')
+INVALID_CHARACTERS_FILTER = re.compile(r'[\\*?:<>|]')
 
 # Remove invalid characters from the song title
 
