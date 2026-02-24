@@ -51,8 +51,9 @@ INVALID_CHARACTERS_FILTER = re.compile(r'[\\*?:"<>|]')
 
 # Remove invalid characters from song title
 
-def remove_invalid_characters(s):
-    return INVALID_CHARACTERS_FILTER.sub('', s)
+def remove_invalid_characters(s: str) -> str:
+    s = INVALID_CHARACTERS_FILTER.sub('', s)
+    return s.replace('/', '∕')
 
 # Fetch songs from playlist
 
