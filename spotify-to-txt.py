@@ -4,9 +4,6 @@
 # Description: Converts a spotify playlist into a txt file which you can use 
 # with another one of my scripts, that modifies metadata for audio files.
 
-# note: update this script to use MusicBrainz
-# Also use ∕ instead of /
-
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 import re
